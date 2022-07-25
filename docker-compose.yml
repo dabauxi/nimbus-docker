@@ -17,7 +17,7 @@ services:
       - ./scripts:/usr/src/nimbus-eth2/nimbus-scripts:ro
       - ./validator_keys:/var/lib/nimbus/validator_keys:ro
       - ${NIMBUS_DATA}:/var/lib/nimbus
-      - ./secrets/jwtsecret:/secrets/jwtsecret:ro
+      - ./secrets/jwtsecret.txt:/secrets/jwtsecret:ro
     command: /usr/src/nimbus-eth2/nimbus-scripts/start-beacon-node-and-validator.sh
     env_file: .env
   nethermind:
@@ -28,7 +28,7 @@ services:
     volumes:
       -  ${NETHERMIND_DATA}:/nethermind/data
       - ./scripts:/nethermind/scripts:ro
-      - ./secrets/jwtsecret:/secrets/jwtsecret:ro
+      - ./secrets/jwtsecret.txt:/secrets/jwtsecret:ro
     entrypoint: /bin/bash
     ports:
         - 8545:8545/tcp

@@ -13,6 +13,8 @@ The following features are available:
 
 A `.nimbus` directory will be created in the repository root (if not specified otherwise) which contains the beacon node database and other Nimbus files.
 
+Further a `.nethermind` directory will be created in the repository root (if not specified otherwise) which contains the execution client database.
+
 ## Configuration
 
 The docker-compose file requires that a `.env` file be present in this
