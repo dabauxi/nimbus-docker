@@ -17,6 +17,7 @@ Further a `.nethermind` directory will be created in the repository root (if not
 
 ## Configuration
 
+### Environment files
 The docker-compose file requires that a `.env` file be present in this
 directory. The `default.env` file provides a template and can be copied `.env`:
 
@@ -29,3 +30,11 @@ Failure to create an `.env` file will result in the following error:
 ```
 ERROR: Couldn't find env file: /home/username/nimbus-docker/.env
 ```
+
+### Data directories
+The data directories for Nimbus and Nethermind need to be created before starting the services. This can be done by executing:
+
+```bash
+# Elevated priviliges are needed to set correct ownership and permissions.
+$ sudo ./create-data-directories.sh $(whoami)
+``
