@@ -20,10 +20,6 @@ if [ "$DISABLE_SUBSCRIBE_ALL_SUBNETS" != "" ]; then
   SUBSCRIBE_ALL_SUBNETS_PARAM=""
 fi
 
-if [ "$VOTING_ETH1_NODE_BACKUP" != "" ]; then
-  VOTING_ETH1_NODE_BACKUP_PARAM="--web3-url=${VOTING_ETH1_NODE_BACKUP}"
-fi
-
 if [ "$GRAFFITI" != "" ]; then
   GRAFFITI_PARAM="--graffiti=${GRAFFITI}"
 fi
@@ -48,8 +44,7 @@ exec ~/nimbus-eth2/build/nimbus_beacon_node \
   --network=$NETWORK \
   --tcp-port=9000 \
   --udp-port=9000 \
-  --web3-url=$VOTING_ETH1_NODE \
-  $VOTING_ETH1_NODE_BACKUP_PARAM \
+  --web3-url=$EXECUTION_NODE \
   --data-dir="/var/lib/nimbus" \
   --jwt-secret="/secrets/jwtsecret" \
   $FEE_RECIPIENT_PARAM \
