@@ -1,0 +1,7 @@
+keystore*
+jwtsecret*
+secrets/
+validator_keys
+.nimbus
+.nethermind
+.env
