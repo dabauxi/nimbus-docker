@@ -17,7 +17,7 @@ Further a `.nethermind` directory will be created in the repository root (if not
 
 ## Configuration
 
-### Environment files
+### Environment file
 The docker-compose file requires that a `.env` file be present in this
 directory. The `default.env` file provides a template and can be copied `.env`:
 
@@ -37,4 +37,4 @@ The data directories for Nimbus and Nethermind need to be created before startin
 ```bash
 # Elevated priviliges are needed to set correct ownership and permissions.
 $ sudo ./create-data-directories.sh $(whoami)
-``
+```
