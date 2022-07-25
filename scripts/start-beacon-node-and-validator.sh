@@ -49,6 +49,9 @@ exec ~/nimbus-eth2/build/nimbus_beacon_node \
   --enr-auto-update=true \
   --data-dir="/var/lib/nimbus" \
   --jwt-secret="/secrets/jwtsecret" \
+  --status-bar=false \
+  --non-interactive \
+  --doppelganger-detection=false \
   $FEE_RECIPIENT_PARAM \
   $METRICS_PARAMS \
   $RPC_PARAMS \
