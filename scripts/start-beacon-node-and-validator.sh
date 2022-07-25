@@ -3,7 +3,7 @@
 set +H
 
 if [ "$IMPORT_LAUNCHPAD_KEYSTORES" != "" ]; then
-  echo "${KEYSTORE_PWD}" | exec ~/nimbus-eth2/build/nimbus_beacon_node deposits import /var/lib/nimbus/validator_keys
+  echo "${KEYSTORE_PWD}" | exec ~/nimbus-eth2/build/nimbus_beacon_node deposits import --data-dir=/var/lib/nimbus /var/lib/nimbus/validator_keys
 fi
 
 if [ "$ENABLE_METRICS" != "" ]; then
@@ -40,11 +40,13 @@ if [ "$TRUSTED_NODE_SYNC_URL" != "" ]; then
   $TRUSTED_NODE_SYNC_PARAMS
 fi
 
+
 exec ~/nimbus-eth2/build/nimbus_beacon_node \
   --network=$NETWORK \
   --tcp-port=9000 \
   --udp-port=9000 \
   --web3-url=$EXECUTION_NODE \
+  --enr-auto-update=true \
   --data-dir="/var/lib/nimbus" \
   --jwt-secret="/secrets/jwtsecret" \
   $FEE_RECIPIENT_PARAM \

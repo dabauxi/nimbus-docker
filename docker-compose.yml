@@ -8,8 +8,8 @@ services:
     stop_grace_period: 1m
     entrypoint: /bin/bash
     ports:
-      - 9000:9000/tcp
-      - 9000:9000/udp
+      - 9001:9000/tcp
+      - 9001:9000/udp
       # Metrics port
       # - 127.0.0.1:9190:9190/tcp
       # - 127.0.0.1:8008:8008/tcp
