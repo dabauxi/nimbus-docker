@@ -4,14 +4,14 @@ Provides a `docker-compose` environment for running Nimbus. This repository is i
 
 The following features are available:
 
-- A beacon node.
-- A validator client (optional) that connects to the beacon node.
+- Nimbus beacon node and validator.
+- Nethermind execution client.
 
 ## Usage
 
 `$ docker-compose up`
 
-A `.nimbus` directory will be created in the repository root which contains the beacon node database and other Nimbus files.
+A `.nimbus` directory will be created in the repository root (if not specified otherwise) which contains the beacon node database and other Nimbus files.
 
 ## Configuration
 
