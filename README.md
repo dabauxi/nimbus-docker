@@ -38,3 +38,11 @@ The data directories for Nimbus and Nethermind need to be created before startin
 # Elevated priviliges are needed to set correct ownership and permissions.
 $ sudo ./create-data-directories.sh $(whoami)
 ```
+
+### JWT Secret
+
+Generate a JWT secret for authentication between the beacon node and execution node to communicate with each other.
+
+```bash
+$ openssl rand -hex 32 | tr -d "\n" > "./secrets/jwtsecret1"
+```
