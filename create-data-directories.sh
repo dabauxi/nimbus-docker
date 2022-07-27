@@ -6,7 +6,11 @@
 # How to execute: $ sudo ./create-data-directories.sh $(whoami)
 
 
-set -e -o pipefail
+set -e
+
+set -o allexport
+source .env
+set +o allexport
 
 USERNAME=$1
 
