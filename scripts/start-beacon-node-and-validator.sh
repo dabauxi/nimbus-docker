@@ -2,8 +2,8 @@
 
 set +H
 
-if [ ! -f /secret/jwtsecret.txt ]; then
-    echo "Please set a jwtsecret file. Exiting."
+if [ ! -f secrets/jwtsecret ]; then
+    echo "Please create a jwtsecret file in the secrets folder. Exiting."
     exit 1
 fi
 
