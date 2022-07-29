@@ -44,5 +44,5 @@ $ sudo ./create-data-directories.sh $(whoami)
 Generate a JWT secret for authentication between the beacon node and execution node to communicate with each other.
 
 ```bash
-$ openssl rand -hex 32 | tr -d "\n" > "./secrets/jwtsecret1"
+$ openssl rand -hex 32 | tr -d "\n" > "./secrets/jwtsecret"
 ```
