@@ -19,8 +19,7 @@ exec ./Nethermind.Runner \
     #--JsonRpc.AdditionalRpcUrls="http://0.0.0.0:8551|http;ws|engine;eth;subscribe" \
     #--JsonRpc.JwtSecretFile="/secrets/jwtsecret" \
     --Init.WebSocketsEnabled true \
-    --JsonRpc.WebSocketsPort 8546 \
-    --datadir data \
+    --datadir /nethermind/data \
     --Pruning.Mode "Full" \
     --Pruning.CacheMb "4096" \
     --Sync.AncientBodiesBarrier "11052984" \
