@@ -8,7 +8,7 @@ if [ ! -f /secrets/jwtsecret ]; then
 fi
 
 if [ "$IMPORT_LAUNCHPAD_KEYSTORES" != "" ]; then
-  echo "${KEYSTORE_PWD}" | exec ~/nimbus-eth2/build/nimbus_beacon_node deposits import --data-dir=/var/lib/nimbus /var/lib/nimbus/validator_keys
+  echo "${KEYSTORE_PWD}" | ./build/nimbus_beacon_node deposits import --data-dir=/var/lib/nimbus /var/lib/nimbus/validator_keys
 fi
 
 if [ "$ENABLE_METRICS" != "" ]; then
