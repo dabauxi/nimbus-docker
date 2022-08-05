@@ -5,8 +5,8 @@
 
 DEFAULT_NETWORK=mainnet
 
-if [ "$EXECUTION_NETWORK" != "" ]; then
-    DEFAULT_NETWORK=$EXECUTION_NETWORK
+if [ "$NETWORK" != "" ]; then
+    DEFAULT_NETWORK=$NETWORK
 fi
 
 exec ./Nethermind.Runner \

@@ -49,7 +49,7 @@ fi
 
 
 exec ~/nimbus-eth2/build/nimbus_beacon_node \
-  --network=$CONSENSUS_NETWORK \
+  --network=$NETWORK \
   --tcp-port=9000 \
   --udp-port=9000 \
   --web3-url=$EXECUTION_NODE \
