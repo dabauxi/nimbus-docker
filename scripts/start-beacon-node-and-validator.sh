@@ -38,7 +38,7 @@ if [ "$TRUSTED_NODE_SYNC_URL" != "" ]; then
   TRUSTED_NODE_SYNC_PARAMS="--trusted-node-url=${TRUSTED_NODE_SYNC_URL} --backfill=false"
 
   ~/nimbus-eth2/build/nimbus_beacon_node trustedNodeSync \
-  --network=$CONSENSUS_NETWORK \
+  --network=$NETWORK \
   --data-dir=/var/lib/nimbus \
   $TRUSTED_NODE_SYNC_PARAMS
 fi
