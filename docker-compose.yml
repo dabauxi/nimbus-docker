@@ -17,7 +17,7 @@ services:
       - ./validator_keys:/var/lib/nimbus/validator_keys:ro
       - ${NIMBUS_DATA}:/var/lib/nimbus
       - ./secrets/jwtsecret:/secrets/jwtsecret:ro
-    command: /usr/src/nimbus-eth2/nimbus-scripts/start-beacon-node-and-validator.sh
+    command: /usr/src/nimbus-eth2/nimbus-scripts/start-nimbus.sh
     env_file: .env
   nethermind:
     image: nethermind/nethermind:${NETHERMIND_VERSION}
@@ -28,10 +28,27 @@ services:
       -  ${NETHERMIND_DATA}:/nethermind/data
       - ./scripts:/nethermind/scripts:ro
       - ./secrets/jwtsecret:/secrets/jwtsecret:ro
-    entrypoint: /bin/bash
+    #entrypoint: /bin/bash
     ports:
         - "127.0.0.1:8545:8545/tcp"
         - "30303:30303/tcp"
         - "30303:30303/udp"
-    command: ./scripts/start-nethermind.sh
-    env_file: .env
+    command: --datadir data
+    environment:
+        - NETHERMIND_CONFIG=goerli
+        - NETHERMIND_INITCONFIG_WEBSOCKETSENABLED=false
+        - NETHERMIND_JSONRPCCONFIG_ENABLED=true
+        - NETHERMIND_JSONRPCCONFIG_ENABLEDMODULES=[Admin,Web3,Eth,Subscribe,Net]
+        - NETHERMIND_JSONRPCCONFIG_HOST=0.0.0.0
+        - NETHERMIND_JSONRPCCONFIG_PORT=8545
+        - NETHERMIND_JSONRPCCONFIG_JWTSECRETFILE=/secrets/jwtsecret
+        - NETHERMIND_PRUNINGCONFIG_MODE=Full
+        - NETHERMIND_PRUNINGCONFIG_FULLPRUNINGMAXDEGREEOFPARALLELISM=2
+        - NETHERMIND_PRUNINGCONFIG_FULLPRUNINGTRIGGER=VolumeFreeSpace
+        - NETHERMIND_SYNCCONFIG_SNAPSYNC=true
+        - NETHERMIND_SYNCCONFIG_ANCIENTBODIESBARRIER=11052984
+        - NETHERMIND_SYNCCONFIG_ANCIENTRECEIPTSBARRIER=11052984
+        - NETHERMIND_JSONRPCCONFIG_ADDITIONALRPCURLS=["http://0.0.0.0:8551|http;ws|net;eth;subscribe;engine;web3;client"]
+        # - NETHERMIND_NETWORKCONFIG_EXTERNALIP=${STATIC_PUBLIC_IP}
+        - NETHERMIND_HEALTHCHECKSCONFIG_ENABLED=true      
+
