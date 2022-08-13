@@ -28,7 +28,6 @@ services:
       -  ${NETHERMIND_DATA}:/nethermind/data
       - ./scripts:/nethermind/scripts:ro
       - ./secrets/jwtsecret:/secrets/jwtsecret:ro
-    #entrypoint: /bin/bash
     ports:
         - "127.0.0.1:8545:8545/tcp"
         - "30303:30303/tcp"
