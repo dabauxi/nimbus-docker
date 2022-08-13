@@ -34,7 +34,7 @@ services:
         - "30303:30303/udp"
     command: --datadir data
     environment:
-        - NETHERMIND_CONFIG=goerli
+        - NETHERMIND_CONFIG=${NETWORK}
         - NETHERMIND_INITCONFIG_WEBSOCKETSENABLED=false
         - NETHERMIND_JSONRPCCONFIG_ENABLED=true
         - NETHERMIND_JSONRPCCONFIG_ENABLEDMODULES=[Admin,Web3,Eth,Subscribe,Net]
@@ -51,4 +51,4 @@ services:
         # - NETHERMIND_JSONRPCCONFIG_ADDITIONALRPCURLS=["http://0.0.0.0:8551|http;ws|net;eth;subscribe;engine;web3;client"]
         # - NETHERMIND_NETWORKCONFIG_EXTERNALIP=${STATIC_PUBLIC_IP}
         - NETHERMIND_HEALTHCHECKSCONFIG_ENABLED=true      
-
+    env_file: .env

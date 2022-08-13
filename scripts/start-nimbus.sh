@@ -1,14 +1,8 @@
 #!/bin/bash
 
-set +H
-
 if [ ! -f /secrets/jwtsecret ]; then
   echo "Please create a jwtsecret file in the secrets folder. Exiting."
   exit 1
-fi
-
-if [ "$IMPORT_LAUNCHPAD_KEYSTORES" != "" ]; then
-  echo "${KEYSTORE_PWD}" | ./build/nimbus_beacon_node deposits import --data-dir=/var/lib/nimbus /var/lib/nimbus/validator_keys
 fi
 
 if [ "$ENABLE_METRICS" != "" ]; then
@@ -32,15 +26,6 @@ if [ "$SUGGESTED_FEE_RECIPIENT" == "" ]; then
   exit 1
 else
   FEE_RECIPIENT_PARAM=--suggested-fee-recipient=${SUGGESTED_FEE_RECIPIENT}
-fi
-
-if [ "$TRUSTED_NODE_SYNC_URL" != "" ]; then
-  TRUSTED_NODE_SYNC_PARAMS="--trusted-node-url=${TRUSTED_NODE_SYNC_URL} --backfill=false"
-
-  ~/nimbus-eth2/build/nimbus_beacon_node trustedNodeSync \
-  --network=$NETWORK \
-  --data-dir=/var/lib/nimbus \
-  $TRUSTED_NODE_SYNC_PARAMS
 fi
 
 if [ "$STATIC_PUBLIC_IP" != "" ]; then

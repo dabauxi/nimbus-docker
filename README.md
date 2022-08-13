@@ -1,48 +1,33 @@
 # Nimbus Docker
 
-Provides a `docker-compose` environment for running Nimbus. This repository is inspired by [lighthouse-docker](https://github.com/sigp/lighthouse-docker) from sigp.
+## How to use
 
-The following features are available:
-
-- Nimbus beacon node and validator.
-- Nethermind execution client.
-
-## Usage
-
-`$ docker-compose up`
-
-A `.nimbus` directory will be created in the repository root (if not specified otherwise) which contains the beacon node database and other Nimbus files.
-
-Further a `.nethermind` directory will be created in the repository root (if not specified otherwise) which contains the execution client database.
-
-## Configuration
-
-### Environment file
-The docker-compose file requires that a `.env` file be present in this
-directory. The `default.env` file provides a template and can be copied `.env`:
-
-```bash
-$ cp default.env .env
-```
-
-Failure to create an `.env` file will result in the following error:
-
-```
-ERROR: Couldn't find env file: /home/username/nimbus-docker/.env
-```
-
-### Data directories
-The data directories for Nimbus and Nethermind need to be created before starting the services. This can be done by executing:
-
+1. First create data directories. This can be done by executing:
 ```bash
 # Elevated priviliges are needed to set correct ownership and permissions.
 $ sudo ./create-data-directories.sh $(whoami)
 ```
-
-### JWT Secret
-
-Generate a JWT secret for authentication between the beacon node and execution node to communicate with each other.
+2. Configure the clients via a `.env` file. Simply copy the `default.env` to a `.env`
+```bash
+$ cp default.env .env
+```
+3. Generate a JWT secret for authentication between the beacon and execution node.
 
 ```bash
-$ openssl rand -hex 32 | tr -d "\n" > "./secrets/jwtsecret"
+$ openssl rand -hex 32 | tr -d "\n" > ./secrets/jwtsecret
+```
+4. Import your validator keys when deciding to run a validator. 
+This can be done by placing your validator keys in the `validator_keys/` directory and execute:
+```bash
+# You'll be asked to enter the password you created to encrypt your keystore(s).
+$ ./import-validator-keys.sh
+```
+5. (Optionally) Start trusted node sync (uses the URL from your .env) by executing:
+```bash
+# You'll be asked to enter the password you created to encrypt your keystore(s).
+$ ./init-trusted-node-sync.sh
+```
+6. Start by running:
+```bash
+$ docker-compose up -d
 ```
