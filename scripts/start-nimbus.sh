@@ -22,8 +22,7 @@ if [ "$GRAFFITI" != "" ]; then
 fi
 
 if [ "$SUGGESTED_FEE_RECIPIENT" == "" ]; then
-  echo "No fee recipient address set. Make sure to provide a valid address by setting SUGGESTED_FEE_RECIPIENT environment variable."
-  exit 1
+  echo "No fee recipient address set. Make sure to provide a valid address by setting SUGGESTED_FEE_RECIPIENT environment variable when running a validator."
 else
   FEE_RECIPIENT_PARAM=--suggested-fee-recipient=${SUGGESTED_FEE_RECIPIENT}
 fi
