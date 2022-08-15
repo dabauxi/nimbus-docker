@@ -33,7 +33,7 @@ services:
         - "30303:30303/udp"
     command: --datadir data
     environment:
-        - NETHERMIND_CONFIG=${NETWORK}
+        - NETHERMIND_CONFIG=mainnet
         - NETHERMIND_INITCONFIG_WEBSOCKETSENABLED=false
         - NETHERMIND_JSONRPCCONFIG_ENABLED=true
         - NETHERMIND_JSONRPCCONFIG_ENABLEDMODULES=[Admin,Web3,Eth,Subscribe,Net]
