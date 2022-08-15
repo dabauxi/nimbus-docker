@@ -37,3 +37,13 @@ $ ./init-trusted-node-sync.sh
 ```bash
 $ docker-compose up -d
 ```
+
+## Update services
+
+For updating services simply execute:
+
+```bash
+$ ./update.sh
+# To update a specific service pass the service name.
+# $ ./update.sh nimbus
+```
