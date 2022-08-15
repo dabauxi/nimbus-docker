@@ -30,7 +30,6 @@ $ ./import-validator-keys.sh
 ```
 5. (Optionally) Start trusted node sync (uses the URL from your .env) by executing:
 ```bash
-# You'll be asked to enter the password you created to encrypt your keystore(s).
 $ ./init-trusted-node-sync.sh
 ```
 6. Start by running:
