@@ -1,10 +1,9 @@
 # https://nimbus.guide/options.html
 
-# Please uncomment the following line and set suggested fee recipient address when running a validator.
+# Please uncomment the following line and set a suggested fee_recipient_address when running a validator.
 # suggested-fee-recipient = "0x000..."
 
 ## nimbus-docker default configuration
-
 network = "mainnet"
 doppelganger-detection = false
 web3-url = ["http://nethermind:8545"]
@@ -18,7 +17,6 @@ tcp-port = 9000
 udp-port = 9000
 
 ## Extra options
-
 # nat = "extip:<INSERT_PUBLIC_IP_ADDRESS_HERE>"
 # rpc = true
 # rpc-address = 0.0.0.0
