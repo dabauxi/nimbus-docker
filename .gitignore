@@ -5,3 +5,4 @@ validator_keys
 .nimbus
 .nethermind
 .env
+nimbus-config/config.toml

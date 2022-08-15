@@ -6,18 +6,17 @@ services:
     container_name: nimbus
     restart: always
     stop_grace_period: 1m
-    entrypoint: /bin/bash
     ports:
       - "9000:9000/tcp"
       - "9000:9000/udp"
       # Metrics port
       - "127.0.0.1:8008:8008/tcp"
     volumes:
-      - ./scripts:/usr/src/nimbus-eth2/nimbus-scripts:ro
+      - ./nimbus-config:/home/user/nimbus-eth2/config:ro
       - ./validator_keys:/var/lib/nimbus/validator_keys:ro
       - ${NIMBUS_DATA}:/var/lib/nimbus
       - ./secrets/jwtsecret:/secrets/jwtsecret:ro
-    command: /usr/src/nimbus-eth2/nimbus-scripts/start-nimbus.sh
+    command: --config-file=/home/user/nimbus-eth2/config/config.toml
     env_file: .env
   nethermind:
     image: nethermind/nethermind:${NETHERMIND_VERSION}
