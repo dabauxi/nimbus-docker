@@ -10,7 +10,9 @@ services:
       - "9000:9000/tcp"
       - "9000:9000/udp"
       # Metrics port
-      - "127.0.0.1:8008:8008/tcp"
+      # - "127.0.0.1:8008:8008/tcp"
+      # REST API port
+      # - "127.0.0.1:5052:5052/tcp"
     volumes:
       - ./nimbus_config:/home/user/nimbus-eth2/config:ro
       - ./validator_keys:/var/lib/nimbus/validator_keys:ro
