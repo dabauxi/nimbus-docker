@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   nimbus:
-    image: statusim/nimbus-eth2:amd64-${NIMBUS_VERSION}
+    image: statusim/nimbus-eth2:amd64-v${NIMBUS_VERSION}
     container_name: nimbus
     restart: always
     stop_grace_period: 1m
@@ -14,7 +14,7 @@ services:
       # REST API port
       # - "127.0.0.1:5052:5052/tcp"
     volumes:
-      - ./nimbus_config:/home/user/nimbus-eth2/config:ro
+      - ./nimbus-config:/home/user/nimbus-eth2/config:ro
       - ./validator_keys:/var/lib/nimbus/validator_keys:ro
       - ${NIMBUS_DATA}:/var/lib/nimbus
       - ./secrets/jwtsecret:/secrets/jwtsecret:ro
@@ -38,9 +38,11 @@ services:
         - NETHERMIND_CONFIG=mainnet
         - NETHERMIND_INITCONFIG_WEBSOCKETSENABLED=false
         - NETHERMIND_JSONRPCCONFIG_ENABLED=true
-        - NETHERMIND_JSONRPCCONFIG_ENABLEDMODULES=[Admin,Web3,Eth,Subscribe,Net]
+        - NETHERMIND_JSONRPCCONFIG_ENABLEDMODULES=[Admin,Eth,Net]
         - NETHERMIND_JSONRPCCONFIG_HOST=0.0.0.0
         - NETHERMIND_JSONRPCCONFIG_PORT=8545
+        - NETHERMIND_JSONRPCCONFIG_ENGINEHOST=0.0.0.0
+        - NETHERMIND_JSONRPCCONFIG_ENGINEPORT=8551
         - NETHERMIND_JSONRPCCONFIG_JWTSECRETFILE=/secrets/jwtsecret
         - NETHERMIND_PRUNINGCONFIG_MODE=${PRUNING_MODE}
         - NETHERMIND_PRUNINGCONFIG_FULLPRUNINGMAXDEGREEOFPARALLELISM=${FULL_PRUNING_MAX_DEGREE_OF_PARALLELISM}
@@ -49,7 +51,6 @@ services:
         - NETHERMIND_SYNCCONFIG_SNAPSYNC=true
         - NETHERMIND_SYNCCONFIG_ANCIENTBODIESBARRIER=11052984
         - NETHERMIND_SYNCCONFIG_ANCIENTRECEIPTSBARRIER=11052984
-        - NETHERMIND_JSONRPCCONFIG_ADDITIONALRPCURLS=["http://0.0.0.0:8551|http;ws|net;eth;subscribe;engine;web3;client"]
         - NETHERMIND_NETWORKCONFIG_EXTERNALIP=${STATIC_PUBLIC_IP:-null}
         - NETHERMIND_HEALTHCHECKSCONFIG_ENABLED=true      
     env_file: .env

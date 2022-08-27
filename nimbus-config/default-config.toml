@@ -6,7 +6,7 @@
 ## nimbus-docker default configuration
 network = "mainnet"
 doppelganger-detection = false
-web3-url = ["http://nethermind:8545"]
+web3-url = ["http://nethermind:8551"]
 data-dir = "/var/lib/nimbus"
 jwt-secret = "/secrets/jwtsecret"
 status-bar = false

@@ -27,7 +27,7 @@ This can be done by placing your validator keys in the `validator_keys/` directo
     # You'll be asked to enter the password you created to encrypt your keystore(s).
     $ ./import-validator-keys.sh
     ```
-5. Copy `nimbus_config/default-config.toml` to `nimbus_config/config.toml` and set your fee recipient address in `nimbus_config/config.toml`.
+5. Copy `nimbus-config/default-config.toml` to `nimbus-config/config.toml` and set your fee recipient address in `nimbus-config/config.toml`.
 
 6. (Optionally) Start trusted node sync (before set a trusted URL in `.env`) by executing:
     ```bash
