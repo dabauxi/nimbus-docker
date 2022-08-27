@@ -1,5 +1,7 @@
 # Nimbus Docker
 
+A validator setup using nimbus and nethermind which can be exectuded via docker compose.
+
 ## How to use
 
 1. First copy the `default.env` to a `.env` and change the configuration as needed.
