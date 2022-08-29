@@ -34,7 +34,7 @@ services:
       - JAVA_OPTS=-Xmx4g
     volumes:
       - ./besu-config:/opt/besu/config:ro
-      - ./data/besu:/var/lib/besu
+      - ${EXECUTION_DATA}:/var/lib/besu
       - ./secrets:/opt/besu/secrets:ro
     ports:
       - "30303:30303/tcp"
