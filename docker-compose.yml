@@ -18,38 +18,24 @@ services:
       - ./validator_keys:/var/lib/nimbus/validator_keys:ro
       - ${NIMBUS_DATA}:/var/lib/nimbus
       - ./secrets/jwtsecret:/secrets/jwtsecret:ro
-    command: --config-file=/home/user/nimbus-eth2/config/config.toml
+    command: >-
+      --network=${NETWORK}
+      --config-file=/home/user/nimbus-eth2/config/config.toml
     env_file: .env
-  nethermind:
-    image: nethermind/nethermind:${NETHERMIND_VERSION}
-    container_name: nethermind
+  besu:
+    image: hyperledger/besu:${BESU_VERSION}
+    container_name: besu
     restart: always
     stop_grace_period: 3m
-    volumes:
-      -  ${NETHERMIND_DATA}:/nethermind/data
-      - ./scripts:/nethermind/scripts:ro
-      - ./secrets/jwtsecret:/secrets/jwtsecret:ro
-    ports:
-        - "127.0.0.1:8545:8545/tcp"
-        - "30303:30303/tcp"
-        - "30303:30303/udp"
-    command: --datadir data
+    command: >-
+      --network ${NETWORK} 
+      --config-file=/opt/besu/config/config.toml
     environment:
-        - NETHERMIND_CONFIG=mainnet
-        - NETHERMIND_INITCONFIG_WEBSOCKETSENABLED=false
-        - NETHERMIND_JSONRPCCONFIG_ENABLED=true
-        - NETHERMIND_JSONRPCCONFIG_ENABLEDMODULES=[Admin,Web3,Eth,Subscribe,Net]
-        - NETHERMIND_JSONRPCCONFIG_HOST=0.0.0.0
-        - NETHERMIND_JSONRPCCONFIG_PORT=8545
-        - NETHERMIND_JSONRPCCONFIG_JWTSECRETFILE=/secrets/jwtsecret
-        - NETHERMIND_PRUNINGCONFIG_MODE=${PRUNING_MODE}
-        - NETHERMIND_PRUNINGCONFIG_FULLPRUNINGMAXDEGREEOFPARALLELISM=${FULL_PRUNING_MAX_DEGREE_OF_PARALLELISM}
-        - NETHERMIND_PRUNINGCONFIG_FULLPRUNINGTRIGGER=${FULL_PRUNING_TRIGGER}
-        - NETHERMIND_PRUNINGCONFIG_CACHEMB=${PRUNING_CACHEMB}
-        - NETHERMIND_SYNCCONFIG_SNAPSYNC=true
-        - NETHERMIND_SYNCCONFIG_ANCIENTBODIESBARRIER=11052984
-        - NETHERMIND_SYNCCONFIG_ANCIENTRECEIPTSBARRIER=11052984
-        - NETHERMIND_JSONRPCCONFIG_ADDITIONALRPCURLS=["http://0.0.0.0:8551|http|eth;subscribe;engine"]
-        - NETHERMIND_NETWORKCONFIG_EXTERNALIP=${STATIC_PUBLIC_IP}
-        - NETHERMIND_HEALTHCHECKSCONFIG_ENABLED=true
-    env_file: .env
+      - JAVA_OPTS=-Xmx4g
+    volumes:
+      - ./besu-config:/opt/besu/config:ro
+      - ./data/besu:/var/lib/besu
+      - ./secrets:/opt/besu/secrets:ro
+    ports:
+      - "30303:30303/tcp"
+      - "30303:30303/udp"

@@ -2,7 +2,6 @@ keystore*
 jwtsecret*
 secrets/
 validator_keys
-.nimbus
-.nethermind
+./data
 .env
 nimbus-config/config.toml

@@ -4,9 +4,8 @@
 # suggested-fee-recipient = "0x000..."
 
 ## nimbus-docker default configuration
-network = "mainnet"
 doppelganger-detection = false
-web3-url = ["http://nethermind:8551"]
+web3-url = ["http://besu:8551"]
 data-dir = "/var/lib/nimbus"
 jwt-secret = "/secrets/jwtsecret"
 status-bar = false

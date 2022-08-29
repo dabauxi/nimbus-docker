@@ -1,10 +1,10 @@
 #! /bin/bash
 # Update docker services.
 # Either update all services or the services you name.
-# e.g. ./update.sh nimbus nethermind
+# e.g. ./update.sh nimbus besu
 
 if [ "$#" -eq 0 ]; then
-    services="nimbus nethermind"
+    services="nimbus besu"
 fi
 
 services=$@

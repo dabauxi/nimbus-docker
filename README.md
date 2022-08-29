@@ -1,6 +1,6 @@
 # Nimbus Docker
 
-A validator setup using nimbus and nethermind which can be exectuded via docker compose.
+A validator setup using nimbus and besu which can be exectuded via docker compose.
 
 ## How to use
 
@@ -15,7 +15,7 @@ A validator setup using nimbus and nethermind which can be exectuded via docker 
     
     # Option 2:
     # Create data directories and set permissions manually e.g.
-    # $ mkdir -p data/nethermind
+    # $ mkdir -p data/besu
     # $ mkdir -p data/nimbus
     # Set permissions as described in here: https://nimbus.guide/data-dir.html#permissions
     ```
