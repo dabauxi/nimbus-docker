@@ -2,7 +2,7 @@
 
 source .env
 
-data_dir_path=$(readlink -f ${NIMBUS_DATA})
+data_dir_path=$(readlink -f ${CONSENSUS_DATA})
 
 docker run -i --rm \
     -v ${data_dir_path}:/home/user/nimbus-eth2/build/data -v ${PWD}/validator_keys:/var/lib/nimbus/validator_keys:ro -u $(id -u):$(id -g) \

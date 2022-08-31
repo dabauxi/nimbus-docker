@@ -4,4 +4,4 @@ secrets/
 validator_keys
 ./data
 .env
-nimbus-config/config.toml
+config.toml

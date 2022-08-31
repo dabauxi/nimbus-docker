@@ -16,7 +16,7 @@ services:
     volumes:
       - ./nimbus-config:/home/user/nimbus-eth2/config:ro
       - ./validator_keys:/var/lib/nimbus/validator_keys:ro
-      - ${NIMBUS_DATA}:/var/lib/nimbus
+      - ${CONSENSUS_DATA}:/var/lib/nimbus
       - ./secrets/jwtsecret:/secrets/jwtsecret:ro
     command: >-
       --network=${NETWORK}
