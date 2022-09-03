@@ -39,9 +39,7 @@ This can be done by placing your validator keys in the `validator_keys/` directo
     ```
 8. Start by running:
     ```bash
-    $ docker-compose up -d
-    # or the following to start without mev-boost
-    # $ docker-compose up -d nimbus nethermind
+    $ ./start.sh
     ```
 
 ## Update services

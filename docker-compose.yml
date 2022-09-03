@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   nimbus:
-    image: statusim/nimbus-eth2:amd64-v${NIMBUS_VERSION}
+    image: statusim/nimbus-eth2:amd64-${NIMBUS_VERSION}
     container_name: nimbus
     restart: always
     stop_grace_period: 1m
@@ -21,6 +21,7 @@ services:
     command: >-
       --network=${NETWORK}
       --config-file=/home/user/nimbus-eth2/config/config.toml
+      ${NIMBUS_MEVBOOST_FLAGS}
     env_file: .env
   besu:
     image: hyperledger/besu:${BESU_VERSION}
