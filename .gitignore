@@ -4,4 +4,4 @@ secrets/
 validator_keys
 ./data
 .env
-config.toml
+*/config.toml
