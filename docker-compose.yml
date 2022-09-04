@@ -38,7 +38,8 @@ services:
       - ${EXECUTION_DATA}:/var/lib/besu
       - ./secrets:/opt/besu/secrets:ro
     ports:
-        - "127.0.0.1:8545:8545/tcp"
+        # RPC port
+        # - "127.0.0.1:8545:8545/tcp"
         - "30303:30303/tcp"
         - "30303:30303/udp"
   mevboost:
