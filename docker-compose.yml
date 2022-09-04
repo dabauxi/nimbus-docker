@@ -32,7 +32,7 @@ services:
       --network ${NETWORK} 
       --config-file=/opt/besu/config/config.toml
     environment:
-      - JAVA_OPTS=-Xmx4g
+      - JAVA_OPTS=${JAVA_OPTS:--Xmx4g}
     volumes:
       - ./besu-config:/opt/besu/config:ro
       - ${EXECUTION_DATA}:/var/lib/besu
