@@ -14,5 +14,5 @@ fi
 
 
 docker-compose pull
-docker-compose down
-docker-compose up -d ${services}
+docker-compose down --remove-orphans
+docker-compose up --remove-orphans -d ${services}

@@ -18,4 +18,4 @@ echo $services
 
 docker-compose pull
 docker-compose stop $services && yes | docker-compose rm -v $services
-docker-compose up -d $services
+docker-compose up --remove-orphans -d $services
