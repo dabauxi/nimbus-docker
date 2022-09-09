@@ -2,13 +2,20 @@
 # Update docker services.
 # Either update all services or the services you name.
 # e.g. ./update.sh nimbus besu
+set -e
+set -a
 
-if [ "$#" -eq 0 ]; then
-    services="nimbus besu"
-fi
+source .env
 
 services=$@
 
+if [[ -z "${ENABLE_MEVBOOST}" ]]; then
+    services="nimbus besu"
+else
+    services="nimbus besu mevboost"
+fi
+echo $services
+
 docker-compose pull
 docker-compose stop $services && yes | docker-compose rm -v $services
-docker-compose up -d $@
+docker-compose up -d $services
