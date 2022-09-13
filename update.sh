@@ -7,14 +7,18 @@ set -a
 
 source .env
 
-services=$@
 
 if [[ -z "${ENABLE_MEVBOOST}" ]]; then
     services="nimbus besu"
 else
     services="nimbus besu mevboost"
 fi
-echo $services
+
+
+if [ "$#" -eq 1 ]; then
+    services=$@
+fi
+
 
 docker-compose pull
 docker-compose stop $services && yes | docker-compose rm -v $services
