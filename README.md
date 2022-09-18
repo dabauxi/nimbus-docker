@@ -47,7 +47,5 @@ This can be done by placing your validator keys in the `validator_keys/` directo
 For updating services simply execute:
 
 ```bash
-$ ./update.sh
-# To update a specific service pass the service name.
-# $ ./update.sh nimbus
+$ ./start.sh
 ```

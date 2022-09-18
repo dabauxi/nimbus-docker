@@ -1,4 +1,5 @@
 #! /bin/bash
+# Start and/or update existing services.
 
 set -e
 set -a
@@ -9,10 +10,8 @@ services="nimbus besu"
 
 if [ "$ENABLE_MEVBOOST" != "" ]; then
     NIMBUS_MEVBOOST_FLAGS="--payload-builder --payload-builder-url=http://mevboost:18550"
-	services=""
+    services=""
 fi
 
-
 docker-compose pull
-docker-compose down --remove-orphans
 docker-compose up --remove-orphans -d ${services}
