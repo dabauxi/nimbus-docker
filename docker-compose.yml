@@ -47,8 +47,8 @@ services:
     container_name: mevboost
     restart: always
     command: >-
-      -addr "0.0.0.0:18550"
       -${NETWORK}
+      -addr 0.0.0.0:18550
       -relay-check
       -relays ${MEV_RELAYS}
     env_file: .env
