@@ -35,7 +35,7 @@ This can be done by placing your validator keys in the `validator_keys/` directo
     ```
 5. Copy `nimbus-config/default-config.toml` to `nimbus-config/config.toml` and set your fee recipient address in `nimbus-config/config.toml`.
 
-6. Copy `nethermind-config/default-config.toml` to `nethermind-config/config.toml` and set your fee recipient address in `nethermind-config/config.toml`.
+6. Copy `nethermind-config/default.env` to `nethermind-config/.env` if you want to add optional settings.
 
 7. (Optionally) Start trusted node sync (before set a trusted URL in `.env`) by executing:
     ```bash
