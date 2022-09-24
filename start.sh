@@ -6,7 +6,7 @@ set -a
 
 source .env
 
-services="nimbus besu"
+services="nimbus nethermind"
 
 if [ "$ENABLE_MEVBOOST" != "" ]; then
     NIMBUS_MEVBOOST_FLAGS="--payload-builder --payload-builder-url=http://mevboost:18550"
