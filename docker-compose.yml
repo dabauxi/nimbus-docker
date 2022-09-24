@@ -23,26 +23,33 @@ services:
       --config-file=/home/user/nimbus-eth2/config/config.toml
       ${NIMBUS_MEVBOOST_FLAGS}
     env_file: .env
-  besu:
-    image: hyperledger/besu:${BESU_VERSION}
-    container_name: besu
+  nethermind:
+    image: nethermind/nethermind:${NETHERMIND_VERSION}
+    container_name: nethermind
     restart: always
     stop_grace_period: 5m
-    command: >-
-      --network ${NETWORK} 
-      --config-file=/opt/besu/config/config.toml
-    environment:
-      - JAVA_OPTS=${JAVA_OPTS:--Xmx5g}
-      - BESU_OPTS=${JAVA_OPTS:--Xmx5g}
     volumes:
-      - ./besu-config:/opt/besu/config:ro
-      - ${EXECUTION_DATA}:/var/lib/besu
-      - ./secrets:/opt/besu/secrets:ro
+      -  ${EXECUTION_DATA}:/nethermind/data
+      - ./scripts:/nethermind/scripts:ro
+      - ./secrets/jwtsecret:/secrets/jwtsecret:ro
     ports:
-        # RPC port
-        # - "127.0.0.1:8545:8545/tcp"
-        - "30303:30303/tcp"
-        - "30303:30303/udp"
+      - "127.0.0.1:8545:8545/tcp"
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+    command: --datadir data
+    environment:
+      - NETHERMIND_CONFIG=${NETWORK}
+      - NETHERMIND_JSONRPCCONFIG_HOST=0.0.0.0
+      - NETHERMIND_JSONRPCCONFIG_PORT=8545
+      - NETHERMIND_JSONRPCCONFIG_ENGINEHOST=0.0.0.0
+      - NETHERMIND_JSONRPCCONFIG_ENGINEPORT=8551
+      - NETHERMIND_JSONRPCCONFIG_ENABLED=true
+      - NETHERMIND_JSONRPCCONFIG_ENABLEDMODULES=[Admin,Eth,Net]
+      - NETHERMIND_JSONRPCCONFIG_JWTSECRETFILE=/secrets/jwtsecret
+      - NETHERMIND_SYNCCONFIG_SNAPSYNC=true
+      - NETHERMIND_SYNCCONFIG_ANCIENTBODIESBARRIER=11052984
+      - NETHERMIND_SYNCCONFIG_ANCIENTRECEIPTSBARRIER=11052984
+    env_file: ./nethermind-config/.env
   mevboost:
     image: flashbots/mev-boost:${MEVBOOST_VERSION}
     container_name: mevboost

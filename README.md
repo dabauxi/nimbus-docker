@@ -1,6 +1,6 @@
 # Nimbus Docker
 
-A validator setup using nimbus and besu which can be exectuded via docker compose.
+A validator setup using nimbus and nethermind which can be exectuded via docker compose.
 
 ## How to use
 
@@ -15,7 +15,7 @@ A validator setup using nimbus and besu which can be exectuded via docker compos
     
     # Option 2:
     # Create data directories and set permissions manually e.g.
-    # $ mkdir -p data/besu
+    # $ mkdir -p data/nethermind
     # $ mkdir -p data/nimbus
     # Set permissions as described in here: https://nimbus.guide/data-dir.html#permissions
     ```
@@ -35,7 +35,7 @@ This can be done by placing your validator keys in the `validator_keys/` directo
     ```
 5. Copy `nimbus-config/default-config.toml` to `nimbus-config/config.toml` and set your fee recipient address in `nimbus-config/config.toml`.
 
-6. Copy `besu-config/default-config.toml` to `besu-config/config.toml` and set your fee recipient address in `besu-config/config.toml`.
+6. Copy `nethermind-config/default-config.toml` to `nethermind-config/config.toml` and set your fee recipient address in `nethermind-config/config.toml`.
 
 7. (Optionally) Start trusted node sync (before set a trusted URL in `.env`) by executing:
     ```bash
