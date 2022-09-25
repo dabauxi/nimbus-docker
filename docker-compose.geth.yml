@@ -1,0 +1,27 @@
+version: '3.0'
+
+services:
+    geth:
+      image: ethereum/client-go:${GETH_VERSION}
+      container_name: geth
+      restart: always
+      stop_grace_period: 3m
+      command: >-
+        --datadir=/var/lib/goethereum
+        --authrpc.jwtsecret=/var/lib/goethereum/ee-secret/jwtsecret
+        --authrpc.vhosts=*
+        --authrpc.port=8551
+        --pprof
+        --pprof.addr=0.0.0.0
+        --http
+        --http.addr=0.0.0.0
+        --http.port=8545
+        --http.vhosts=*
+        --http.corsdomain=*
+        --http.api=web3,eth,net
+      volumes:
+        - ${BACKUP_EXECUTION_DATA:-./geth-data}:/var/lib/goethereum
+        - ./secrets:/var/lib/goethereum/ee-secret/
+      ports:
+        - "30303:30303/tcp"
+        - "30303:30303/udp"
