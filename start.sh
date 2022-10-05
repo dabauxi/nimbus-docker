@@ -10,7 +10,7 @@ services="nimbus nethermind"
 
 if [ "$ENABLE_MEVBOOST" != "" ]; then
     NIMBUS_MEVBOOST_FLAGS="--payload-builder --payload-builder-url=http://mevboost:18550"
-    services="nimbus besu mevboost"
+    services="nimbus nethermind mevboost"
 fi
 
 if [ "$#" -eq 1 ]; then
