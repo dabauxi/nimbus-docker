@@ -28,7 +28,7 @@ services:
     container_name: geth
     stop_grace_period: 5m
     volumes:
-        - ${GETH_DATA}:/root/.ethereum
+        - ${EXECUTION_DATA}:/root/.ethereum
         - ./secrets/jwtsecret:/var/lib/goethereum/ee-secret/jwtsecret:ro
     ports:
         - 30303:30303/tcp
