@@ -23,6 +23,10 @@ A validator setup using nimbus and besu which can be exectuded via docker compos
     ```bash
     $ openssl rand -hex 32 | tr -d "\n" > ./secrets/jwtsecret
     ```
+    (Optional) Create a `keymanagertoken` token file for accessing the keymanager API
+    ```bash
+    $ openssl rand -hex 32 | tr -d "\n" > ./secrets/keymanagertoken
+    ```
 4. Import your validator keys when deciding to run a validator. 
 This can be done by placing your validator keys in the `validator_keys/` directory and by executing:
     ```bash

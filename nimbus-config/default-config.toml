@@ -24,3 +24,5 @@ udp-port = 9000
 # metrics = true
 # metrics-address = 0.0.0.0
 # metrics-port = 8008
+# keymanager = true
+# keymanager-token-file = "/secrets/keymanagertoken"
