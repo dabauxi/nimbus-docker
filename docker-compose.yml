@@ -27,7 +27,7 @@ services:
     image: hyperledger/besu:${BESU_VERSION}
     container_name: besu
     restart: always
-    stop_grace_period: 3m
+    stop_grace_period: 5m
     command: >-
       --network ${NETWORK} 
       --config-file=/opt/besu/config/config.toml
