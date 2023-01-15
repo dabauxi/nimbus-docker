@@ -16,3 +16,4 @@ nat-method="DOCKER"
 #metrics-port="6060"
 #max-peers=25
 #Xdns-enabled=true
+#Xplugin-rocksdb-high-spec-enabled=true
