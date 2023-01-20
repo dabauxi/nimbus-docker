@@ -14,6 +14,7 @@ subscribe-all-subnets = true
 enr-auto-update = true
 tcp-port = 9000
 udp-port = 9000
+history = "prune"
 
 ## Extra options
 #nat = "extip:<INSERT_PUBLIC_IP_ADDRESS_HERE>"
