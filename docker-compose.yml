@@ -27,7 +27,7 @@ services:
     image: nethermind/nethermind:${NETHERMIND_VERSION}
     container_name: nethermind
     restart: always
-    stop_grace_period: 3m
+    stop_grace_period: 5m
     volumes:
       -  ${EXECUTION_DATA}:/nethermind/data
       - ./scripts:/nethermind/scripts:ro
